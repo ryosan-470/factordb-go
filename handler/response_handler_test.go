@@ -11,7 +11,33 @@ var cases = []struct {
 }{
 	{
 		`{"id": "2", "status": "P", "factors": [["2", 1]]}`,
-		FactorDB{Id: "2", Status: "P", Factors: []Factor{Factor{Number: 2, Power: 1}}},
+		FactorDB{
+			Id:     "2",
+			Status: "P",
+			Factors: []Factor{
+				Factor{Number: 2, Power: 1},
+			},
+		},
+	},
+	{
+		`{"id": "-1", "status": "Unit", "factors": []}`,
+		FactorDB{
+			Id:      "-1",
+			Status:  "Unit",
+			Factors: []Factor{},
+		},
+	},
+	{
+		`{"id": "90", "status": "FF", "factors": [["2", 1], ["3", 2], ["5", 1]]}`,
+		FactorDB{
+			Id:     "90",
+			Status: "FF",
+			Factors: []Factor{
+				Factor{Number: 2, Power: 1},
+				Factor{Number: 3, Power: 2},
+				Factor{Number: 5, Power: 1},
+			},
+		},
 	},
 }
 
