@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-type FactorDB struct {
+type FactorDbResponse struct {
 	Status  string
 	Id      string
 	Factors []Factor
@@ -17,7 +17,7 @@ type Factor struct {
 	Power  int
 }
 
-func ConvertToFactorDB(b []byte) FactorDB {
+func ConvertToFactorDB(b []byte) FactorDbResponse {
 	var base interface{}
 	err := json.Unmarshal(b, &base)
 	if err != nil {
@@ -25,7 +25,7 @@ func ConvertToFactorDB(b []byte) FactorDB {
 	}
 	s := base.(map[string]interface{})
 
-	var factor FactorDB
+	var factor FactorDbResponse
 	factor.Status = s["status"].(string)
 	factor.Id = s["id"].(string)
 
