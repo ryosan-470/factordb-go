@@ -15,7 +15,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "factordb"
 	app.Usage = "The CLI for factordb.com"
-	app.Version = "0.0.1"
+	app.Version = "1.0.0"
 
 	// Global option
 	app.Flags = []cli.Flag{
