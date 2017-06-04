@@ -17,8 +17,8 @@ clean:
 .PHONY: cross-build
 cross-build:
 	for os in darwin linux windows; do \
-		for arch in amd64 i386; do \
-			GOOS=$$os GOARCH=$$arch CGO_ENABLED=0 go build -a dist/$$os-$$arch/$(NAME); \
+		for arch in amd64 386; do \
+			GOOS=$$os GOARCH=$$arch CGO_ENABLED=0 go build -o dist/$(NAME)-$$os-$$arch; \
     done; \
   done
 
