@@ -2,9 +2,13 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"strconv"
+	"strings"
 
 	"github.com/codegangsta/cli"
+	"github.com/ryosan-470/factordb-go/factordb"
 )
 
 func main() {
@@ -27,16 +31,40 @@ func main() {
 }
 
 func callAction(c *cli.Context) error {
+	var number = ""
+	if len(c.Args()) > 0 {
+		number = c.Args().First()
+	}
+
+	n, err := strconv.Atoi(number)
+	if err != nil {
+		log.Fatal("Your input is not number")
+	}
+
+	f := factordb.FactorDB{Number: n}
+	if err := f.Connect(); err != nil {
+		log.Fatal("Connection Error")
+	}
+
+	factors, _ := f.GetFactorList()
+
+	var output string
+
 	var isJson = c.GlobalBool("json")
 	if isJson {
-		fmt.Println("Response json type")
+		id, _ := f.GetId()
+		status, _ := f.GetStatus()
+		var fs []string
+		for _, f := range factors {
+			fs = append(fs, fmt.Sprintf("%d", f))
+		}
+
+		facs := fmt.Sprintf("[%s]", strings.Join(fs, ", "))
+		output = fmt.Sprintf("{\"id\": \"https://factordb.com/?id=%s\", \"status\": \"%s\", \"factors\": %v}", id, status, facs)
+	} else {
+		output = strings.Trim(fmt.Sprintf("%v", factors), "[]")
 	}
 
-	var paramFirst = ""
-	if len(c.Args()) > 0 {
-		paramFirst = c.Args().First()
-	}
-
-	fmt.Printf("Hi, I am receiving the number %s\n", paramFirst)
+	fmt.Printf("%s\n", output)
 	return nil
 }
