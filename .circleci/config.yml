@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.8  # CircleCI Go images available at: https://hub.docker.com/r/circleci/golang/
+
+    working_directory: /go/src/github.com/ryosan-470/factordb-go
+
+
+    steps:
+      - checkout
+      - run: curl https://glide.sh/get | sh
+      - run: make deps
+      - run: make
+      - run:
+          name: Running test code
+          command: make test
