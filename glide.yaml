@@ -1,0 +1,4 @@
+package: github.com/ryosan-470/factordb-go
+import:
+- package: github.com/codegangsta/cli
+  version: ^1.19.1
