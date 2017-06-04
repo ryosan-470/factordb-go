@@ -15,3 +15,7 @@ jobs:
       - run:
           name: Running test code
           command: make test
+      - run: ./coverage.sh
+      - run:
+          name: Upload the coverage result to codecov.io
+          command: bash <(curl -s https://codecov.io/bash)
