@@ -1,6 +1,6 @@
 # FactorDB CLI
 [![CircleCI](https://img.shields.io/circleci/project/github/ryosan-470/factordb-go.svg?style=flat-square)](https://github.com/ryosan-470/factordb-go)
-[![AppVeyor](https://img.shields.io/appveyor/ci/ryosan-470/factordb-go.svg?style=flat-square)](https://ci.appveyor.com/project/jtwp470/factordb-go/)
+[![AppVeyor](https://img.shields.io/appveyor/ci/ryosan-470/factordb-go.svg?style=flat-square)](https://ci.appveyor.com/project/ryosan-470/factordb-go/)
 [![license](https://img.shields.io/github/license/ryosan-470/factordb-go.svg?style=flat-square)](https://github.com/ryosan-470/factordb-go/blob/master/LICENSE.md)
 [![Codecov](https://img.shields.io/codecov/c/github/ryosan-470/factordb-go.svg?style=flat-square)](https://codecov.io/gh/ryosan-470/factordb-go)
 [![Github All Releases](https://img.shields.io/github/downloads/ryosan-470/factordb-go/total.svg?style=flat-square)](https://github.com/ryosan-470/factordb-go/releases)
@@ -52,7 +52,7 @@ Download pre-build binary from [here](https://github.com/ryosan-470/factordb-go/
 
 | Platform | Status  |
 |:---------|:-------:|
-|Windows|[![AppVeyor](https://img.shields.io/appveyor/ci/ryosan-470/factordb-go.svg?style=flat-square)](https://ci.appveyor.com/project/jtwp470/factordb-go/)|
+|Windows|[![AppVeyor](https://img.shields.io/appveyor/ci/ryosan-470/factordb-go.svg?style=flat-square)](https://ci.appveyor.com/project/ryosan-470/factordb-go/)|
 
 ## CLI
 If you want to know the result of factorization of 16, you should type like this:
