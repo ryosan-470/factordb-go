@@ -38,7 +38,8 @@ func callAction(c *cli.Context) error {
 
 	n, err := strconv.Atoi(number)
 	if err != nil {
-		log.Fatal("Your input is not number")
+		fmt.Println("Your input is not number")
+		os.Exit(1)
 	}
 
 	f := lib.FactorDB{Number: n}
