@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/codegangsta/cli"
-	"github.com/ryosan-470/factordb-go/factordb"
+	"github.com/ryosan-470/factordb-go/lib"
 )
 
 func main() {
@@ -41,7 +41,7 @@ func callAction(c *cli.Context) error {
 		log.Fatal("Your input is not number")
 	}
 
-	f := factordb.FactorDB{Number: n}
+	f := lib.FactorDB{Number: n}
 	if err := f.Connect(); err != nil {
 		log.Fatal("Connection Error")
 	}

@@ -1,4 +1,4 @@
-package handler
+package lib
 
 import (
 	"fmt"
@@ -7,11 +7,11 @@ import (
 
 var cases = []struct {
 	input    string
-	expected FactorDbResponse
+	expected FactorDBResponse
 }{
 	{
 		`{"id": "2", "status": "P", "factors": [["2", 1]]}`,
-		FactorDbResponse{
+		FactorDBResponse{
 			Id:     "2",
 			Status: "P",
 			Factors: []Factor{
@@ -21,7 +21,7 @@ var cases = []struct {
 	},
 	{
 		`{"id": "-1", "status": "Unit", "factors": []}`,
-		FactorDbResponse{
+		FactorDBResponse{
 			Id:      "-1",
 			Status:  "Unit",
 			Factors: []Factor{},
@@ -29,7 +29,7 @@ var cases = []struct {
 	},
 	{
 		`{"id": "90", "status": "FF", "factors": [["2", 1], ["3", 2], ["5", 1]]}`,
-		FactorDbResponse{
+		FactorDBResponse{
 			Id:     "90",
 			Status: "FF",
 			Factors: []Factor{
@@ -51,7 +51,7 @@ func TestConvert(t *testing.T) {
 	}
 }
 
-func CheckEquality(got, expected FactorDbResponse) (bool, string) {
+func CheckEquality(got, expected FactorDBResponse) (bool, string) {
 	if got.Status != expected.Status {
 		message := "Both status must be equality"
 		return false, message

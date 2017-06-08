@@ -1,10 +1,8 @@
-package factordb
+package lib
 
 import (
 	"fmt"
 	"testing"
-
-	"github.com/ryosan-470/factordb-go/handler"
 )
 
 func TestEmpty(t *testing.T) {
@@ -15,14 +13,14 @@ func TestEmpty(t *testing.T) {
 		{
 			FactorDB{
 				Number: 1,
-				Result: handler.FactorDbResponse{},
+				Result: FactorDBResponse{},
 			},
 			true,
 		},
 		{
 			FactorDB{
 				Number: 1,
-				Result: handler.FactorDbResponse{
+				Result: FactorDBResponse{
 					Id:     "-1",
 					Status: "Unit",
 				},
@@ -47,7 +45,7 @@ func TestGetId(t *testing.T) {
 		{
 			FactorDB{
 				Number: 1,
-				Result: handler.FactorDbResponse{
+				Result: FactorDBResponse{
 					Id:     "1",
 					Status: "Unit",
 				},
@@ -72,7 +70,7 @@ func TestGetStatus(t *testing.T) {
 		{
 			FactorDB{
 				Number: 1,
-				Result: handler.FactorDbResponse{
+				Result: FactorDBResponse{
 					Id:     "1",
 					Status: "Unit",
 				},
@@ -90,10 +88,10 @@ func TestGetStatus(t *testing.T) {
 }
 
 func TestGetFactorList(t *testing.T) {
-	var testFactors = []handler.Factor{
-		handler.Factor{Number: 2, Power: 1},
-		handler.Factor{Number: 3, Power: 2},
-		handler.Factor{Number: 5, Power: 1},
+	var testFactors = []Factor{
+		Factor{Number: 2, Power: 1},
+		Factor{Number: 3, Power: 2},
+		Factor{Number: 5, Power: 1},
 	}
 
 	var cases = []struct {
@@ -103,7 +101,7 @@ func TestGetFactorList(t *testing.T) {
 		{
 			FactorDB{
 				Number: 1,
-				Result: handler.FactorDbResponse{
+				Result: FactorDBResponse{
 					Status:  "Unit",
 					Factors: testFactors,
 				},
@@ -113,10 +111,10 @@ func TestGetFactorList(t *testing.T) {
 		{
 			FactorDB{
 				Number: 1,
-				Result: handler.FactorDbResponse{
+				Result: FactorDBResponse{
 					Status: "Unit",
-					Factors: []handler.Factor{
-						handler.Factor{},
+					Factors: []Factor{
+						Factor{},
 					},
 				},
 			},

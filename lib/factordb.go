@@ -1,4 +1,4 @@
-package factordb
+package lib
 
 import (
 	"errors"
@@ -6,15 +6,13 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-
-	"github.com/ryosan-470/factordb-go/handler"
 )
 
 const ENDPOINT = "https://factordb.com/api"
 
 type FactorDB struct {
 	Number int
-	Result handler.FactorDbResponse
+	Result FactorDBResponse
 }
 
 func (f *FactorDB) Empty() bool {
@@ -38,7 +36,7 @@ func (f *FactorDB) Connect() error {
 		return errors.New("Empty Body")
 	}
 
-	response := handler.ConvertToFactorDB(b)
+	response := ConvertToFactorDB(b)
 	f.Result = response
 	return nil
 }

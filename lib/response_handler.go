@@ -1,4 +1,4 @@
-package handler
+package lib
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-type FactorDbResponse struct {
+type FactorDBResponse struct {
 	Status  string
 	Id      string
 	Factors []Factor
@@ -17,7 +17,7 @@ type Factor struct {
 	Power  int
 }
 
-func ConvertToFactorDB(b []byte) FactorDbResponse {
+func ConvertToFactorDB(b []byte) FactorDBResponse {
 	var base interface{}
 	err := json.Unmarshal(b, &base)
 	if err != nil {
@@ -25,7 +25,7 @@ func ConvertToFactorDB(b []byte) FactorDbResponse {
 	}
 	s := base.(map[string]interface{})
 
-	var factor FactorDbResponse
+	var factor FactorDBResponse
 	factor.Status = s["status"].(string)
 	factor.Id = s["id"].(string)
 
