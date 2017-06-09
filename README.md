@@ -1,5 +1,5 @@
 # FactorDB CLI
-[![CircleCI](https://img.shields.io/circleci/project/github/ryosan-470/factordb-go.svg?style=flat-square)](https://github.com/ryosan-470/factordb-go)
+[![CircleCI](https://img.shields.io/circleci/project/github/ryosan-470/factordb-go.svg?style=flat-square)](https://circleci.com/gh/ryosan-470/factordb-go)
 [![AppVeyor](https://img.shields.io/appveyor/ci/ryosan-470/factordb-go.svg?style=flat-square)](https://ci.appveyor.com/project/ryosan-470/factordb-go/)
 [![license](https://img.shields.io/github/license/ryosan-470/factordb-go.svg?style=flat-square)](https://github.com/ryosan-470/factordb-go/blob/master/LICENSE.md)
 [![Codecov](https://img.shields.io/codecov/c/github/ryosan-470/factordb-go.svg?style=flat-square)](https://codecov.io/gh/ryosan-470/factordb-go)
