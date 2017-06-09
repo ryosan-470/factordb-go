@@ -39,11 +39,15 @@ var cases = []struct {
 			},
 		},
 	},
+	{
+		`{"id": }`,
+		FactorDBResponse{},
+	},
 }
 
 func TestConvert(t *testing.T) {
 	for _, c := range cases {
-		got := ConvertToFactorDB([]byte(c.input))
+		got, _ := ConvertToFactorDB([]byte(c.input))
 		check, message := CheckEquality(got, c.expected)
 		if check == false {
 			t.Errorf(message)

@@ -36,7 +36,11 @@ func (f *FactorDB) Connect() error {
 		return errors.New("Empty Body")
 	}
 
-	response := ConvertToFactorDB(b)
+	response, err := ConvertToFactorDB(b)
+	if err != nil {
+		return errors.New("Cannot converting data")
+	}
+
 	f.Result = response
 	return nil
 }
