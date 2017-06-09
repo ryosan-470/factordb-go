@@ -37,6 +37,25 @@ func TestEmpty(t *testing.T) {
 	}
 }
 
+func TestConnect(t *testing.T) {
+	var cases = []struct {
+		input    FactorDB
+		expected error
+	}{
+		{
+			FactorDB{Number: 10},
+			nil,
+		},
+	}
+
+	for _, c := range cases {
+		got := c.input.Connect()
+		if got != c.expected {
+			t.Errorf("Test Connect: %v", c.input)
+		}
+	}
+}
+
 func TestGetId(t *testing.T) {
 	var cases = []struct {
 		input    FactorDB
