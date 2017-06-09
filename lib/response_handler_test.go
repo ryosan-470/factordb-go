@@ -39,6 +39,10 @@ var cases = []struct {
 			},
 		},
 	},
+	{
+		`{"id": }`,
+		FactorDBResponse{},
+	},
 }
 
 func TestConvert(t *testing.T) {

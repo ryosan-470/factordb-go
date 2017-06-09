@@ -5,6 +5,20 @@ import (
 	"testing"
 )
 
+var result FactorDBResponse = FactorDBResponse{
+	Id:     "1",
+	Status: "Unit",
+}
+
+var db FactorDB = FactorDB{
+	Number: 1,
+	Result: result,
+}
+
+var error_db FactorDB = FactorDB{
+	Number: 1,
+}
+
 func TestEmpty(t *testing.T) {
 	var cases = []struct {
 		input    FactorDB
@@ -18,13 +32,7 @@ func TestEmpty(t *testing.T) {
 			true,
 		},
 		{
-			FactorDB{
-				Number: 1,
-				Result: FactorDBResponse{
-					Id:     "-1",
-					Status: "Unit",
-				},
-			},
+			db,
 			false,
 		},
 	}
@@ -62,20 +70,18 @@ func TestGetId(t *testing.T) {
 		expected string
 	}{
 		{
-			FactorDB{
-				Number: 1,
-				Result: FactorDBResponse{
-					Id:     "1",
-					Status: "Unit",
-				},
-			},
+			db,
 			"1",
+		},
+		{
+			error_db,
+			"",
 		},
 	}
 
 	for _, c := range cases {
-		got, err := c.input.GetId()
-		if got != c.expected || err != nil {
+		got, _ := c.input.GetId()
+		if got != c.expected {
 			t.Errorf("got = %s expected = %s", got, c.expected)
 		}
 	}
@@ -87,20 +93,18 @@ func TestGetStatus(t *testing.T) {
 		expected string
 	}{
 		{
-			FactorDB{
-				Number: 1,
-				Result: FactorDBResponse{
-					Id:     "1",
-					Status: "Unit",
-				},
-			},
+			db,
 			"Unit",
+		},
+		{
+			error_db,
+			"",
 		},
 	}
 
 	for _, c := range cases {
-		got, err := c.input.GetStatus()
-		if got != c.expected || err != nil {
+		got, _ := c.input.GetStatus()
+		if got != c.expected {
 			t.Errorf("got = %s expected = %s", got, c.expected)
 		}
 	}
@@ -139,11 +143,15 @@ func TestGetFactorList(t *testing.T) {
 			},
 			[]int{},
 		},
+		{
+			error_db,
+			[]int{},
+		},
 	}
 
 	for _, c := range cases {
-		got, err := c.input.GetFactorList()
-		if !CheckEqualitySlice(got, c.expected) || err != nil {
+		got, _ := c.input.GetFactorList()
+		if !CheckEqualitySlice(got, c.expected) {
 			t.Errorf("got = %v expected = %v", got, c.expected)
 		}
 	}
