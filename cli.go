@@ -11,11 +11,17 @@ import (
 	"github.com/ryosan-470/factordb-go/lib"
 )
 
+const (
+	name    = "factordb"
+	usage   = "The CLI for factordb.com"
+	version = "1.0.0"
+)
+
 func main() {
 	app := cli.NewApp()
-	app.Name = "factordb"
-	app.Usage = "The CLI for factordb.com"
-	app.Version = "1.0.0"
+	app.Name = name
+	app.Usage = usage
+	app.Version = version
 
 	// Global option
 	app.Flags = []cli.Flag{
