@@ -2,7 +2,7 @@ package lib
 
 import (
 	"encoding/json"
-	"log"
+	"errors"
 	"strconv"
 )
 
@@ -17,11 +17,11 @@ type Factor struct {
 	Power  int
 }
 
-func ConvertToFactorDB(b []byte) FactorDBResponse {
+func ConvertToFactorDB(b []byte) (FactorDBResponse, error) {
 	var base interface{}
 	err := json.Unmarshal(b, &base)
 	if err != nil {
-		log.Fatal("Cannot parse your input")
+		return FactorDBResponse{}, errors.New("Cannot parse the input")
 	}
 	s := base.(map[string]interface{})
 
@@ -38,5 +38,5 @@ func ConvertToFactorDB(b []byte) FactorDBResponse {
 		factor.Factors = append(factor.Factors, Factor{number, power})
 	}
 
-	return factor
+	return factor, nil
 }
